@@ -4,7 +4,7 @@ def input_check():
         input_check()
 
     else:
-        for rows in range(6):
+        for _ in range(6):
             for numbers in range(n,n+7):
                 print ("{:>3}".format(numbers), end =" ")
             n = n+7
