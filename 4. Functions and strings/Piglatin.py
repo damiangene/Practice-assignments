@@ -1,12 +1,38 @@
+def to_english(sentence):
+    s_list = (sentence.lower()).split()
+    new_sentence = ""
+
+    for word in s_list:
+        original_word = ""
+        if "way" in word:
+            original_word = word[0:len(word)-3]
+            
+        elif "way" not in word:
+            i = 1
+            original_word = word[0:len(word)-2]
+            for _ in word:
+                if original_word[len(original_word)-i] == "a":
+                    starting_letters = original_word[len(original_word)-(i-1):len(original_word)]
+                
+                else:
+                    i += 1
+            
+            original_word = starting_letters + original_word[0:len(original_word)-(i)]
+            
+        new_sentence = new_sentence + original_word + " "
+
+    print (new_sentence)
+
+
+
 def to_pig_latin(sentence):
     s_list = (sentence.lower()).split()
-    s_list_new = []
+    new_sentence = ""
 
     for word in s_list:
         new_word = ""
         if word[0] in "aeiou":
             new_word = word + "way"
-            s_list_new.append(new_word) 
         
         elif word[0] not in "aeiou":
             i = 0
@@ -19,27 +45,13 @@ def to_pig_latin(sentence):
                     break
 
             new_word = word[i:len(word)] + "a" + new_word + "ay"
-            s_list_new.append(new_word)       
-
-    new_sentence = ""
-            
-    for word in s_list_new:
-        if word == s_list_new[0]:
-            new_sentence = ((word).title())
         
-        else:
-            new_sentence += " " + word
+        new_sentence = new_sentence + new_word + " "
 
     print (new_sentence)
 
 
-
-def to_english(sentence):
-    s_list = (sentence.lower()).split()
-    print (s_list)
-
-
-def e_or_a():
+def e_or_p():
     user_input = input("(E)nglish or (P)ig latin? \n")
     user_input = user_input.lower()
 
@@ -47,11 +59,11 @@ def e_or_a():
         sentence = input("What is your English sentence? \n")
         to_pig_latin(sentence)
     
-    elif user_input == "a":
+    elif user_input == "p":
         sentence = input("What is your Pig Latin sentence? \n")
         to_english(sentence)
 
     else:
-        e_or_a()
+        e_or_p()
 
-e_or_a()
+e_or_p()
