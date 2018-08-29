@@ -1,4 +1,6 @@
-func = "(1/5)*x +2"
+
+func = input("What function you wanna draw?")
+
 for y in range(10,-11,-1):
     
     for x in range(-10,11):
