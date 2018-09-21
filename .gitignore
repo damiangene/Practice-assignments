@@ -3,3 +3,4 @@
 .vscode/*
 __pycache__/*
 *TO.txt
+.pytest_cache/*
