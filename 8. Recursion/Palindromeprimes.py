@@ -8,7 +8,10 @@ print ("The Palindromic primes are: ")
 
 def palindromeprime(m,n):
     def prime_check(m,base_check):          
-        if m % base_check > 0:
+        if base_check < 2 and m > 1:
+            return True
+        
+        elif m % base_check > 0:
             base_check -= 1
             
             if base_check > 1:
