@@ -2,6 +2,7 @@ lines = []
 words = []
 word_dict = {}
 users_wdict = {}
+a = []
 
 print ("****Anagram Finder****")
 users_word = input("Enter a word: ")
@@ -17,7 +18,7 @@ for letter in users_word:
     temp[letter] = occ
 users_wdict[users_word] = temp
 
-with open("EnglishWords.txt", "rt") as tmp_file:
+with open("EnglishWords.txt", "r") as tmp_file:
     for line in tmp_file:
         lines.append(line.rstrip('\n'))
 
@@ -39,13 +40,14 @@ for word in words:
         temp[letter] = occ
     word_dict[word] = temp 
  
-
-for word in word_dict:
     if word == users_word:
         pass
     
     elif word_dict[word] == users_wdict[users_word]:
-        print ("{}".format(word), end =", ") 
+        a.append(word)
 
-    elif word_dict[word] == word_dict[words[-1]] and word_dict[words[-1]] != users_wdict[users_word]:
-        print ("Sorry, anagrams of {} could not be found.".format(users_word))
+if len(a) > 0:
+    print ("{}".format(a))
+
+else:
+    print ("Sorry, anagrams of {} could not be found.".format(users_word))
