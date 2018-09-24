@@ -4,19 +4,23 @@ word_dict = {}
 users_wdict = {}
 a = []
 
+def word_to_dict(word):
+    temp = {}
+    for letter in word:       
+        if letter in temp:
+            occ = temp.get(letter)
+            occ += 1
+        
+        else:
+            occ = 1
+        
+        temp[letter] = occ
+    return temp
+
 print ("****Anagram Finder****")
 users_word = input("Enter a word: ")
 temp = {}
-for letter in users_word:       
-    if letter in temp:
-        occ = temp.get(letter)
-        occ += 1
-    
-    else:
-        occ = 1
-    
-    temp[letter] = occ
-users_wdict[users_word] = temp
+users_wdict[users_word] = word_to_dict(users_word)
 
 with open("EnglishWords.txt", "r") as tmp_file:
     for line in tmp_file:
@@ -28,17 +32,7 @@ for element in lines:
 words = words[words.index("START"):]
  
 for word in words:
-    temp = {}
-    for letter in word:       
-        if letter in temp:
-            occ = temp.get(letter)
-            occ += 1
-        
-        else:
-            occ = 1
-        
-        temp[letter] = occ
-    word_dict[word] = temp 
+    word_dict[word] = word_to_dict(word) 
  
     if word == users_word:
         pass
