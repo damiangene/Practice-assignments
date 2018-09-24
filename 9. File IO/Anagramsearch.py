@@ -18,8 +18,7 @@ def word_to_dict(word):
     return temp
 
 print ("****Anagram Finder****")
-users_word = input("Enter a word: ")
-temp = {}
+users_word = (input("Enter a word: ")).lower()
 users_wdict[users_word] = word_to_dict(users_word)
 
 with open("EnglishWords.txt", "r") as tmp_file:
