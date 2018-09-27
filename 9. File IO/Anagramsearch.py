@@ -2,34 +2,21 @@ lines = []
 words = []
 word_dict = {}
 users_wdict = {}
-a = []
 
 def word_to_dict(word):
     temp = {}
     for letter in word:       
-        if letter in temp:
-            occ = temp.get(letter)
-            occ += 1
-        
-        else:
-            occ = 1
-        
-        temp[letter] = occ
+        temp[letter] = temp.get(letter,0) + 1
     return temp
 
 print ("****Anagram Finder****")
 users_word = (input("Enter a word: ")).lower()
 users_wdict[users_word] = word_to_dict(users_word)
 
-with open("EnglishWords.txt", "r") as tmp_file:
-    for line in tmp_file:
-        lines.append(line.rstrip('\n'))
-
-for element in lines:
-    words.append(element)
-
+words = [x.strip() for x in open("EnglishWords.txt", "r").readlines()]
 words = words[words.index("START"):]
- 
+
+a = []
 for word in words:
     word_dict[word] = word_to_dict(word) 
  
